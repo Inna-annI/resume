@@ -1,0 +1,92 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+    <h1>{{name}}</h1>
+    <em>{{birthdate}}</em>
+    <br>
+    <address>{{birthplace}}</address>
+    <br>
+    <br>
+    <em>{{deathdate}}</em>
+    <br>
+    <address>{{deathplace}}</address>
+    <br>
+    <br>
+    {{nationality}}
+    <br>
+    {{occupation}}
+    <br>
+    <br>
+    <hr>
+    {{> title data="Known for:" big=false }}
+    {{#each known_for}}
+    <li>{{this}}</li>
+    {{/each}}
+    {{> title data="Education" big=false }}
+    {{#each education}}
+    {{degree}}
+    <br>
+    {{field}}
+    <br>
+    {{institution}}
+    <br>
+    {{year}}
+    {{/each}}
+    {{> title data="Notable publications" big=false }}
+    {{#each notable_publications}}
+    <div>{{title}}</div>
+    <div>{{year}}</div>
+    <div>{{publisher}}</div>
+    {{/each}}
+    {{> title data="Partners" big=false }}
+    {{#each partners}}
+    <div>{{name}}</div>
+    <div>{{relationship}}</div>
+    <div>{{years}}</div>
+    {{/each}}
+    {{> title data="Awards" big=false }}
+    {{#each awards}}
+    {{title}}
+    <br>
+    {{year}}
+    <br>
+    {{description}}
+    {{/each}}
+    {{> title data="Influences" big=false }}
+    {{#each influences }}
+    <li>{{this}}</li>
+    {{/each}}
+    {{> title data="influenced" big=false }}
+    {{#each influenced }}
+    <li>{{this}}</li>
+    {{/each}}
+    {{> title data="quotes" big=false }}
+    {{#each quotes }}
+    <li><q>{{this}}</q></li>
+    {{/each}}
+    {{> title data="Major discoveries" big=false }}
+    {{#each major_discoveries}}
+    {{title}}
+    <br>
+    {{year}}
+    <br>
+    {{description}}
+    {{/each}}
+    {{#with contributions}}
+    {{title}}
+    <br>
+    {{description}}
+    <br>
+    {{year}}
+    <br>
+    {{field}}
+    {{/with}}
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
