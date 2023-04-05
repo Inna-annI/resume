@@ -1,0 +1,115 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+    <h1>{{make}}</h1>
+    <h2>{{model}}</h2>
+    <em>{{year}}</em>
+    <br>
+    <b>{{color}}</b>
+    <br>
+    <hr>
+    {{> title data="Features:" big=true }}
+    {{#with features}}
+        {{> title data="Interior" big=false }}
+        <ul>
+        {{#with interior}}
+            <li>{{> title data="Seats" big=false }}</li>
+            <ul>
+                <li>
+                    {{#with seats}}
+                    {{material}}
+                    <br>
+                    {{color}}
+                    <br>
+                    {{#if heated}}heated{{/if}}
+                    <br>
+                    {{#if ventilated}}ventilated{{/if}}
+                    {{/with}}
+                </li>
+            </ul>
+            <li>{{> title data="Dashboard" big=false }}</li>
+            <ul>
+                <li>
+                    {{#with dashboard}}
+                    {{material}}
+                    <br>
+                    {{color}}
+                    <br>
+                        {{#with display}}
+                        {{type}}
+                        <br>
+                        {{size}}
+                        <br>
+                        {{resolution}}
+                        {{#if touchscreen}}touchscreen{{/if}}
+                        {{/with}}
+                    {{/with}}
+                </li>
+            </ul>
+            <li>{{> title data="Audio" big=false }}</li>
+            <ul>
+                <li>
+                    {{#with audio}}
+                    {{system}}
+                    <br>
+                    {{speakers}}
+                    <br>
+                    {{#if subwoofer}}subwoofer{{/if}}
+                    <br>
+                    {{#if bluetooth}}bluetooth{{/if}}
+                    <br>
+                    {{#if USB}}USB{{/if}}
+                    {{/with}}
+                </li>
+            </ul>
+        {{/with}}
+        
+        </ul>
+    {{/with}}
+    {{> title data="Engine" big=false }}
+        <ul>
+            {{#with engine}}
+            <li>{{type}}</li>
+            <li>{{displacement}}</li>
+            <li>{{horsepower}}</li>
+            <li>{{torque}}</li>
+            <li>{{#with transmission}} {{type}} ({{gears}}) {{/with}}</li>
+            {{/with}}
+        </ul>
+    {{> title data="Fuel economy:" big=false }}
+    {{#with fuel_economy}}
+        {{#if city}} City ({{city}}) {{/if}}
+        <br>
+        {{#if highway}} Highway ({{highway}}) {{/if}}
+        <br>
+        {{#if combined}} Combined ({{combined}}) {{/if}}
+    {{/with}}
+
+    {{> title data="Fuel economy:" big=false }}
+    {{#with price}}
+        {{#if base}} Base ({{base}}) {{/if}}
+        <br>
+        {{#if destination}} Destination ({{destination}}) {{/if}}
+        <br>
+        {{> title data="Options:" big=false }}
+        {{#with options}}
+            {{#if navigation}} Navigation ({{navigation}}) {{/if}}
+            <br>
+            {{#if moonroof}} Moonroof ({{moonroof}}) {{/if}}
+            <br>
+            {{#if premium_paint}} Premium paint ({{premium_paint}}) {{/if}}
+        {{/with}}
+        <br>
+        <hr>
+        <br>
+        <big>{{#if total}} <b>Total</b> ({{total}}) {{/if}}</big>
+    {{/with}}
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
