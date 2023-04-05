@@ -1,0 +1,112 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+
+<div>
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+    <em>{{price}}</em>
+    <h2>{{category}}</h2>
+    {{> title data="Features" big=true }}
+    {{#with features}}
+        {{> title data="Processor" big=false }}
+        {{#with processor}}
+            {{brand}}
+            <br>
+            {{model}}
+            <br>
+            {{speed}}
+            <br>
+            {{#if cores}} Cores {{cores}} {{/if}}
+            <br>
+            {{cache}}
+        {{/with}}
+        {{> title data="Memory" big=false }}
+        {{#with memory}}
+            {{type}}
+            <br>
+            {{size}}
+            <br>
+            {{speed}}
+        {{/with}}
+        {{> title data="Storage" big=false }}
+        {{#with storage}}
+            {{type}}
+            <br>
+            {{size}}
+        {{/with}}
+        {{> title data="Display" big=false }}
+        {{#with display}}
+            {{size}}
+            <br>
+            {{resolution}}
+            <br>
+            {{technology}}
+            <br>
+            {{color_space}}
+            <br>
+            {{brightness}}
+            <br>
+            {{refresh_rate}}
+        {{/with}}
+        {{> title data="Graphkics" big=false }}
+        {{#with graphkics}}
+            {{brand}}
+            <br>
+            {{model}}
+            <br>
+            {{memory}}
+        {{/with}}
+        {{> title data="Ports" big=false }}
+        <ul>
+            {{#each ports}}
+                <li>
+                    {{type}}
+                    <br>
+                    {{#if count}} Count {{count}} {{/if}}
+                    {{#each features}}
+                        <br>{{this}}
+                    {{/each}}
+                </li>
+            {{/each}}
+        </ul>
+        {{> title data="Battery" big=false }}
+        {{#with battery}}
+            {{type}}
+            <br>
+            {{capacity}}
+            <br>
+            {{life}}
+        {{/with}}
+        <br>
+        <br>
+        {{#if weight}}<b>Weight</b> {{weight}}{{/if}}
+        {{> title data="Dimensions" big=false }}
+        {{#with dimensions}}
+            {{height}}
+            <br>
+            {{width}}
+            <br>
+            {{depth}}
+        {{/with}}
+        <br>
+        <br>
+        {{#if operating_system}}<b>Operating system</b> {{operating_system}}{{/if}}
+        {{> title data="Accessories" big=false }}
+        <ul>
+            {{#each accessories}}
+            <li>
+                <b>{{name}}</b>
+                <br>
+                <em>{{price}}</em>
+            </li>
+            {{/each}}
+        </ul>
+    {{/with}}
+</div>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}
