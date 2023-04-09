@@ -1,0 +1,126 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+<main class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="py-4 px-0">
+
+
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						{{#each breadcrumb}}
+						<li class="breadcrumb-item">
+							{{#if url}}
+							<a href="{{url}}">{{name}}</a>
+							{{/if}}
+							{{#if @last}}<disabled>{{name}}</disabled>{{/if}}
+						</li>
+						{{/each}}
+					</ol>
+				</nav>
+
+
+
+				{{#with productData}}
+				<div class="col-6">
+					<div class="card">
+						<img class="card-img" src="{{img}}">
+					</div>
+				</div>
+
+				<div class="col order-5">
+					<div class="row justify-content-end">
+						<div class="col-5">
+							<table class="table">
+								{{#with item}}
+								<thead>
+									<tr>
+										{{#each head}}
+										<th>
+											{{this}}
+										</th>
+										{{/each}}
+									</tr>
+								</thead>
+
+								<tbody>
+									{{#each body}}
+									<tr>
+										{{#each this}}
+										<td>{{this}}</td>
+										{{/each}}
+									</tr>
+									{{/each}}
+								</tbody>
+								{{/with}}
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-6">
+					<div class="card mt-3 p-3">
+						{{#with info}}
+						<h4>{{title}}</h4>
+						<p>{{about}}</p>
+						<b>{{price}}
+							<br>
+							{{#each category}}
+							{{#if isHot}}
+							<span class="badge text-bg-warning rounded-pill">{{name}}</span>
+							{{/if}}
+							{{#if isNew}}
+							<span class="badge text-bg-primary rounded-pill">{{name}}</span>
+							{{/if}}
+							{{#if isBonus}}
+							<span class="badge text-bg-info rounded-pill">{{name}}</span>
+							{{/if}}
+							{{/each}}
+						</b>
+						{{/with}}
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="card mt-3 py-2 px-4">
+						<div class="col-12">
+							<div>
+								{{#each actionList}}
+								{{#if isWarning}}
+								<button class="btn btn-warning me-2 btn-sm">
+									<span class="text-uppercase">{{name}}</span>
+								</button>
+								{{/if}}
+								{{#if isError}}
+								<button class="btn btn-outline-danger me-2 btn-sm">
+									<span class="text-uppercase">{{name}}</span>
+								</button>
+								{{/if}}
+								{{#if isSuccess}}
+								<button class="btn btn-success me-2 btn-sm">
+									<span class="text-uppercase">{{name}}</span>
+								</button>
+								{{/if}}
+								{{#if isGood}}
+								<button class="btn btn-outline-success btn-sm">
+									<span class="text-uppercase">{{name}}</span>
+								</button>
+								{{/if}}
+								{{/each}}
+
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/with}}
+			</div>
+		</div>
+	</div>
+</main>
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}

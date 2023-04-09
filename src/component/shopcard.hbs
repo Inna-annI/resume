@@ -1,0 +1,22 @@
+<section class="card-deck">
+	<div class="row mt-3">
+		{{#each cards}}
+		<div class="col-4">
+			<div class="card mt-2">
+				<img src="{{image}}" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">{{title}}
+						{{#if isHot}}
+						<span class="badge text-bg-danger rounded-pill">Hot</span>
+						{{/if}}
+						{{#if isNew}}
+						<span class="badge text-bg-success rounded-pill">New</span>
+						{{/if}}
+					</h5>
+					<p class="card-text">{{description}}</p>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</section>

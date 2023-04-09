@@ -7,19 +7,22 @@
 
 		<section>
 			<div class="col-12">
-				<ul class="nav nav-tabs">
-					{{#with navigation}}
+				{{#with navigation}}
+				<div class="nav nav-tabs">
+					{{#each links}}
 					<div class="nav-item">
-						{{#each links}}
 						<a href="{{href}}" class="nav-link">{{text}}</a>
-						{{/each}}
 					</div>
+					{{/each}}
 					{{#with button}}
-					<button class="nav-link">
-						<a href="{{href}}" class="btn btn-primary ">{{text}}</a>
-					</button>
+					<div class="nav-item">
+						<button class="nav-link">
+							<a href="{{href}}" class="btn btn-primary">{{text}}</a>
+						</button>
+					</div>
 					{{/with}}
-					{{/with}}
+				</div>
+				{{/with}}
 			</div>
 	</div>
 	</section>
