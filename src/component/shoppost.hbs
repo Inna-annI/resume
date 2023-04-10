@@ -1,0 +1,21 @@
+<div class="display-4 text-center pb-3">{{title}}</div>
+
+<div class="col mt-3 mb-5">
+	<div class="row g-2">
+		{{#each cards}}
+			<section class="col-3">
+				<div class="card text-bg-secondary">
+					<h6 class="card-header">{{title}}
+						{{#if isTop}}
+						<span class="badge text-bg-danger rounded-pill">Top</span>
+						{{/if}}
+						{{#if isNew}}
+						<span class="badge text-bg-success rounded-pill">New</span>
+						{{/if}}
+					</h6>
+					<p class="mx-2 p-2">{{description}}</p>
+				</div>
+			</section>
+		{{/each}}
+	</div>
+</div>
