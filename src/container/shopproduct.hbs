@@ -7,34 +7,38 @@
 		<div class="col-12">
 			<div class="py-4 px-0">
 
-
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						{{#each breadcrumb}}
-						<li class="breadcrumb-item">
-							{{#if url}}
-							<a href="{{url}}">{{name}}</a>
-							{{/if}}
-							{{#if @last}}<disabled>{{name}}</disabled>{{/if}}
-						</li>
-						{{/each}}
-					</ol>
-				</nav>
-
-
-
-				{{#with productData}}
-				<div class="col-6">
-					<div class="card">
-						<img class="card-img" src="{{img}}">
-					</div>
+				<div class="ms-3">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							{{#each breadcrumb}}
+							<li class="breadcrumb-item">
+								{{#if url}}
+								<a href="{{url}}">{{name}}</a>
+								{{/if}}
+								{{#if @last}}<disabled>{{name}}</disabled>{{/if}}
+							</li>
+							{{/each}}
+						</ol>
+					</nav>
 				</div>
 
-				<div class="col order-5">
-					<div class="row justify-content-end">
-						<div class="col-5">
+				<div class="col-12">
+					<div class="row justify-content-start">
+
+
+						{{#with productData}}
+						<div class="nav col-6 ms-3">
+							<div class="col-12">
+								<div class="card">
+									<img class="card-img" src="{{img}}">
+								</div>
+							</div>
+						</div>
+
+
+						{{#with item}}
+						<div class="nav col-5 ms-4">
 							<table class="table">
-								{{#with item}}
 								<thead>
 									<tr>
 										{{#each head}}
@@ -49,42 +53,71 @@
 									{{#each body}}
 									<tr>
 										{{#each this}}
-										<td>{{this}}</td>
+										<td>
+											{{this}}
+										</td>
 										{{/each}}
 									</tr>
 									{{/each}}
 								</tbody>
-								{{/with}}
 							</table>
 						</div>
+						{{/with}}
+
+
+						{{#with info}}
+						<div class="nav col-6">
+							<div class="card p-3 mt-3 ms-3">
+								<h4>{{title}}</h4>
+								<p class="mt-3">{{about}}</p>
+								<b>{{price}}
+									<br>
+									{{#each category}}
+									{{#if isHot}}
+									<span class="badge text-bg-warning rounded-pill">{{name}}</span>
+									{{/if}}
+									{{#if isNew}}
+									<span class="badge text-bg-primary rounded-pill">{{name}}</span>
+									{{/if}}
+									{{#if isBonus}}
+									<span class="badge text-bg-info rounded-pill">{{name}}</span>
+									{{/if}}
+									{{/each}}
+								</b>
+							</div>
+						</div>
+						{{/with}}
+
+						<div class="col-5 ms-5 mt-3">
+							{{#with param}}
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-dark">{{title}}</li>
+								{{#each list}}
+								<li class="list-group-item">{{this}}</li>
+								{{/each}}
+							</ul>
+							{{/with}}
+						</div>
+
 					</div>
 				</div>
 
+				<div class="row justify-content-end">
 
-				<div class="col-6">
-					<div class="card mt-3 p-3">
-						{{#with info}}
-						<h4>{{title}}</h4>
-						<p>{{about}}</p>
-						<b>{{price}}
-							<br>
-							{{#each category}}
-							{{#if isHot}}
-							<span class="badge text-bg-warning rounded-pill">{{name}}</span>
-							{{/if}}
-							{{#if isNew}}
-							<span class="badge text-bg-primary rounded-pill">{{name}}</span>
-							{{/if}}
-							{{#if isBonus}}
-							<span class="badge text-bg-info rounded-pill">{{name}}</span>
-							{{/if}}
-							{{/each}}
-						</b>
+					<div class="col-5">
+						{{#with alert}}
+						{{#if isError}}
+						<span class="alert alert-danger" role="alert">{{text}}</span>
+						{{/if}}
 						{{/with}}
 					</div>
+
 				</div>
+
+
+
 				<div class="col-12">
-					<div class="card mt-3 py-2 px-4">
+					<div class="card my-5 me-4 py-2 px-4">
 						<div class="col-12">
 							<div>
 								{{#each actionList}}
@@ -109,14 +142,32 @@
 								</button>
 								{{/if}}
 								{{/each}}
-
 							</div>
 						</div>
 					</div>
 				</div>
-				{{/with}}
 			</div>
+
 		</div>
+		{{/with}}
+
+		<hr>
+
+		<div class="col my-5">
+			{{#with goodsOtherBlock}}
+			<h4 class="text-center">{{title}}</h4>
+			{{> shopcard}}
+			{{/with}}
+		</div>
+
+		<hr>
+
+		<div class="col my-5 mx-1">
+			{{> shopaction}}
+		</div>
+
+	</div>
+	</div>
 	</div>
 </main>
 
