@@ -1,0 +1,90 @@
+{{!--
+Це код container файлу для summary сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+--}}
+<main class="container">
+	<div class="row">
+		<div class="col-12">
+
+			{{#with header}}
+			<div class="my-5 mx-2">
+				<h1>{{title}}</h1>
+				{{#with button}}
+				<a href="{{link}}" class="btn btn-outline-secondary">
+					<span>{{text}}</span>
+				</a>
+				{{/with}}
+			</div>
+			{{/with}}
+
+			<hr>
+			
+			{{> cartGoodsltem}}
+
+			<hr>
+
+			<div class="my-5 ms-2">
+				{{#with total}}
+				<h2>{{title}}</h2>
+				<h1>{{amount}}</h1>
+				<p>{{delivey}}</p>
+				{{#each buttons}}
+				{{#with this}}
+				{{#if isSuccess}}
+					<a href="{{link}}" class="btn btn-success">
+						<span>{{text}}</span>
+					</a>
+				{{/if}}
+				<br>
+				{{#if isOutline}}
+					<a href="{{link}}" class="btn btn-outline-success">
+						<span>{{text}}</span>
+					</a>
+				{{/if}}
+				{{/with}}
+				{{/each}}
+				{{/with}}
+			</div>
+
+			<hr>
+
+			<div class="my-5 mx-2">
+				{{#with goodsOtherBlock}}
+				<h1 class="text-center">{{title}}</h1>
+				{{> shopcard}}
+				{{/with}}
+			</div>
+
+			<hr>
+
+			<div class="my-5 mx-2">
+				{{#with subscribe}}
+				<div class="card text-bg-dark">
+					<div class="mt-2 ms-2">
+					<h2>{{header}}</h2>
+					<p>{{description}}</p>
+					</div>
+					{{#each buttons}}
+					{{#with this}}
+					<div class="m-2">
+						<a href="{{link}}" class="btn btn-primary">
+							<span>{{text}}</span>
+						</a>
+					</div>
+					{{/with}}
+					{{/each}}
+				</div>
+				{{/with}}
+			</div>
+			
+			<hr>
+
+		</div>
+	</div>
+</main>
+
+
+{{!--
+Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+Адже наш layout/default.hbs має вже структуру HTML
+--}}

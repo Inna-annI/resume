@@ -1,0 +1,15 @@
+<div class="pt-5 px-3">
+    <div class="card">
+        <header class="py-3 mb-2">
+            {{#with navigation}}
+            <ul class="nav">
+                {{#each links}}
+                <li class="nav nav-item">
+                    <a href="{{href}}" class="nav-link px-2 mt-2 {{#if @last}} disabled{{/if}}">{{text}}</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/with}}
+        </header>
+    </div>
+</div>
