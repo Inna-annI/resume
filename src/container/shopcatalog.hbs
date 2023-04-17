@@ -12,10 +12,10 @@
 				<h1>{{header}}</h1>
 			</div>
 
-			<div class="col-9">
+			<div class="row">
 				{{#each sortBlock}}
-					<div class="m-2">
-				<select class="form-select" aria-label="Default select example">
+					<div class="m-2 my-5 col-3">
+					<select class="form-select" aria-label="Default select example">
 					<option selected>{{placeholder}}</option>
 					{{#each options}}
 					<option value="{{value}}">{{text}}</option>
@@ -30,14 +30,66 @@
 
 	<div class="row">
 		<div class="col-4">
-			<div class="ms-2">
+			<div class="ms-1">
 				{{#with filterBlock}}
 				<div class="card">
 					<div class="p-2">
 						{{#with sellers}}
 							<p>{{title}}</p>
+							{{#each list}}
+							<div class="form-check">
+  							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+								<label class="form-check-label" for="flexCheckDefault">{{value}}</label>
+							</div>
+							{{/each}}
 						{{/with}}
-						
+
+						<hr>
+
+						{{#with brands}}
+						<p>{{title}}</p>
+						{{#with input}}
+						<input class="form-control" type="text" placeholder="{{placeholder}}" aria-label="default input example">
+						{{/with}}
+						{{#each options}}
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+							<label class="form-check-label" for="flexCheckDefault">{{value}}</label>
+						</div>
+						{{/each}}
+						{{/with}}	
+
+						<hr>
+
+						{{#with price}}	
+						<p>{{title}}</p>
+						{{#with range}}
+						<div class="mb-2">
+						<input class="form-control" type="text" placeholder="{{from}}" aria-label="default input example">
+						</div>
+						<div class="mb-2">
+						<input class="form-control" type="text" placeholder="{{to}}" aria-label="default input example">
+						</div>
+						{{/with}}
+						{{#with button}}
+						<div class="mb-2">
+							<a href="{{link}}" class="btn btn-outline-secondary">{{text}}</a>
+						</div>
+						{{/with}}
+						{{/with}}	
+
+						<hr>
+
+						{{#each filterList}}
+						<p>{{title}}</p>
+						{{#each options}}
+						<div class="form-check">
+  							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+								<label class="form-check-label" for="flexCheckDefault">{{value}}</label>
+						</div>
+						{{/each}}
+						<hr>
+						{{/each}}		
 					</div>
 				</div>
 				{{/with}}
@@ -45,8 +97,67 @@
 		</div>
 
 		<div class="col-8">
-
+			<div class="row">
+				{{#each goodsList}}
+				<div class="col-6 mb-3">
+					<div class="card">
+						<img src="{{img}}" class="cart-img-top">
+						<div class="m-2">
+							{{#if isHot}}					
+							<span class="badge rounded-pill text-bg-warning">HOT!</span>						
+							{{/if}}
+							{{#if isNew}}						
+							<span class="badge rounded-pill text-bg-primary">Нове</span>
+							{{/if}}
+						</div>
+						<div class="ms-2 mb-2">
+							{{#if isFast}}
+							<div>
+							<span class="badge text-bg-success">Швидка доставка</span>
+							</div>
+							{{/if}}
+							{{#if isFree}}
+							<div>
+							<span class="badge text-bg-secondary">Безкоштовна доставка</span>
+							</div>
+							{{/if}}
+						</div>
+						<div class="ms-2">
+							<h5>{{name}}</h5>
+							{{#with review}}
+							<p>{{amount}} {{text}}</p>
+							{{/with}}
+							<h4>{{price}}</h4>
+							<p>{{delivery}}</p>
+							{{#each buttons}}
+							{{#if isPrimary}}
+							<div class="mb-2">
+								<a href="{{link}}" class="btn btn-primary">{{text}}</a>
+							</div>
+							{{/if}}
+							{{#if isSecondary}}
+							<div class="mb-2">
+								<a href="{{link}}" class="btn btn-secondary">{{text}}</a>
+							</div>
+							{{/if}}
+							{{/each}}
+							{{#each characteristics}}
+							<div class="mt-3">
+								<ul>
+									<li>{{title}}: {{value}}</li>
+								</ul>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
 		</div>
+		<div class="my-5">
+		{{> shopaction}}
+		</div>	
+		<hr>
 	</div>
 </main>
 
