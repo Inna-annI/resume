@@ -127,8 +127,17 @@
 		<div class="col">
 			<hr>
 
-			
-			{{> reviewItem}}
+			<div class="my-5">
+				<div class="card">
+					<div class="p-3">
+						{{#each reviewList}}
+						<div class="my-5">
+							{{> reviewItem}}
+						</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
 
 			<hr>
 
