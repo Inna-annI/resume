@@ -3,29 +3,27 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
 --}}
 
-<div>
+<div class="m-5">
     {{#with program}}
-            <section>
+            <section class="my-5">
             {{#with excursion}}
             <div><h1>{{name}}</h1></div>
             {{#with location}}
             <b>{{city}}</b>
-            <br>
             <b>{{country}}</b>
             {{/with}}
-            <br>
             <em>{{date}}</em> 
-        
         </section>
+
         <hr>
+
         <div>
             {{#each program}}
             <h2>{{name}}</h2>
-            {{type}}
-            <br>
-            {{duration}}
+            <div class="my-3">
+            {{type}}: {{duration}}
             {{#if duration}} (hour) {{/if}}
-            <br> 
+            </div> 
             <br>
                 {{#with details}}
                 {{#with venue}}

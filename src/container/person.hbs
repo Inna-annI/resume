@@ -3,26 +3,25 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
 --}}
 
-<div>
+<div class="m-5">
     {{#with person}}
     <div>
         <h1>{{name}}</h1>
     </div>
-    <div>
+    <div class="mt-2 mb-5">
         <b>{{age}} {{gender}}</b>
     </div>
-    <br>
-    <br>
-    <div>
+    
+    <div class="mb-3">
         {{#with address}}
         <em>{{> title data="My address:" big=false }}</em>
         <em>{{street}}, {{city}}, {{state}}, {{zip}}, {{country}}.</em>
         {{/with}}
     </div>
-    <br>
+    
     <hr>
-    <br>
-    <section>
+    
+    <section class="my-5">
             {{> title data="My educationss" big=true }}
         {{#each education}}
             {{degree}}
@@ -34,10 +33,10 @@
             {{graduationYear}}
         {{/each}}
     </section>
-    <br>
+    
     <hr>
-    <br>
-    <section>
+   
+    <section class="my-5">
             {{> title data="My work experience" big=true }}
         {{#each workExperience}}
         {{company}}
