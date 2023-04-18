@@ -3,24 +3,26 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
 --}}
 
-<div>
+<div class="m-5">
     <h1>{{name}}</h1>
+    <div class="my-5">
     <em>{{birthdate}}</em>
-    <br>
     <address>{{birthplace}}</address>
-    <br>
-    <br>
+    </div>
+    
+    <div class="my-5">
     <em>{{deathdate}}</em>
-    <br>
     <address>{{deathplace}}</address>
-    <br>
-    <br>
+    </div>
+    
+    <div class="my-5">
     {{nationality}}
     <br>
     {{occupation}}
-    <br>
-    <br>
+    </div>
+    
     <hr>
+    
     {{> title data="Known for:" big=false }}
     {{#each known_for}}
     <li>{{this}}</li>
